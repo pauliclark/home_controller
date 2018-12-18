@@ -1,0 +1,28 @@
+{
+  "name": "home_controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pauliclark/home_controller.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pauliclark/home_controller/issues"
+  },
+  "homepage": "https://github.com/pauliclark/home_controller#readme",
+  "dependencies": {
+    "dot": "^1.1.2",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "onoff": "^3.2.2",
+    "parcel": "^1.10.3",
+    "socketio": "^1.0.0"
+  }
+}
