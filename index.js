@@ -27,6 +27,16 @@ var httpServer = http.createServer(app);
 httpServer.listen(3000, function() {
 	console.log('Listening on port %d', httpServer.address().port);
 });
+
+const chromeLauncher = require('chrome-launcher');
+
+chromeLauncher.launch({
+  startingUrl: 'http://localhost:3000',
+  chromeFlags:['--start-fullscreen','--kiosk']
+}).then(chrome => {
+  console.log(`Chrome debugging port running on ${chrome.port}`);
+});
+/*
 var sr = require('screenres');
 (async () => {
 	const browser = await puppeteer.launch({
@@ -41,4 +51,4 @@ var sr = require('screenres');
 	process.on('exit', (code) => {
 		browser.close();
 	  });
-})();
+})();*/
