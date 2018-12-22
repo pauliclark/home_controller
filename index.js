@@ -3,7 +3,7 @@ require("dot").process({
 	, destination: __dirname + "/render/"
 	, path: (__dirname + "/templates")
 });
-
+const puppeteer = require('puppeteer');
 var express = require('express')
 , http = require('http')
 , app = express()
@@ -27,3 +27,17 @@ var httpServer = http.createServer(app);
 httpServer.listen(3000, function() {
 	console.log('Listening on port %d', httpServer.address().port);
 });
+var sr = require('screenres');
+(async () => {
+	const browser = await puppeteer.launch({
+		headless: false,
+		args: ['--disable-infobars','--start-fullscreen']
+	});
+	var size = sr.get()
+	const page = await browser.newPage();
+	await page.goto('http://localhost:3000');
+	page.setViewport({ width:size[0], height:size[1] });
+	process.on('exit', (code) => {
+		browser.close();
+	  });
+})();
