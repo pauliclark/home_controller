@@ -6,7 +6,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:5,
+            status:26,
             switch:2
         },
         {
@@ -15,7 +15,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:6,
+            status:22,
             switch:3
         },
         {
@@ -24,7 +24,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:13,
+            status:23,
             switch:4
         },
         {
@@ -33,7 +33,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:19,
+            status:24,
             switch:17
         },
         {
@@ -42,7 +42,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:26,
+            status:25,
             switch:27
         },
         {
@@ -51,7 +51,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:10,
+            status:27,
             switch:22
         },
         {
@@ -60,7 +60,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:9,
+            status:28,
             switch:14
         },
         {
@@ -69,7 +69,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:11,
+            status:29,
             switch:15
         }
     ];
