@@ -6,7 +6,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:1,
+            status:5,
             switch:2
         },
         {
@@ -15,8 +15,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:3,
-            switch:4
+            status:6,
+            switch:3
         },
         {
             name:'Kitchen Cabinets',
@@ -24,8 +24,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:4,
-            switch:5
+            status:13,
+            switch:4
         },
         {
             name:'Lounge',
@@ -33,8 +33,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:6,
-            switch:7
+            status:19,
+            switch:17
         },
         {
             name:'Lounge wall',
@@ -42,8 +42,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:8,
-            switch:9
+            status:26,
+            switch:27
         },
         {
             name:'Bedroom',
@@ -52,7 +52,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:10,
-            switch:11
+            switch:22
         },
         {
             name:'Boudoir',
@@ -60,8 +60,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:12,
-            switch:13
+            status:9,
+            switch:14
         },
         {
             name:'Patio',
@@ -69,7 +69,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:14,
+            status:11,
             switch:15
         }
     ];
