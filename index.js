@@ -3,7 +3,7 @@ require("dot").process({
 	, destination: __dirname + "/render/"
 	, path: (__dirname + "/templates")
 });
-const puppeteer = require('puppeteer');
+//const puppeteer = require('puppeteer');
 var express = require('express')
 , http = require('http')
 , app = express()
@@ -46,7 +46,7 @@ chromeLauncher.launch({
   console.log(`Chrome debugging port running on ${chrome.port}`);
 });
 */
-var sr = require('screenres');
+/*var sr = require('screenres');
 (async () => {
 	const browser = await puppeteer.launch({
 		headless: false,
@@ -60,4 +60,4 @@ var sr = require('screenres');
 	process.on('exit', (code) => {
 		browser.close();
 	  });
-})();
+})();*/
