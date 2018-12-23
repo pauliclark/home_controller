@@ -1,10 +1,34 @@
 <html>
 <head>
-<script src='\index.js'></script>
+<script src='/socket.io-client/dist/socket.io.slim.js'></script>
+<script src='/jquery/dist/jquery.slim.min.js'></script>
+<script src='/index.js'></script>
+<style>
+.lights{
+	display:inline-block;
+	width:50%;
+	height:20%;
+	background-size:cover;
+	background-position:center center;
+	border:1px solid #DDD;
+	cursor:pointer;
+}
+.lights.on{
+	border:1px solid #F00;
+}
+{{ for(var k in it.lights) { }}
+	.{{=k.toLowerCase().replace(/\W/g,'')}}{
+		background-image:url({{=it.lights[k].schema.image.off}});
+	}
+	.{{=k.toLowerCase().replace(/\W/g,'')}}.on{
+		background-image:url({{=it.lights[k].schema.image.on}});
+	}
+{{ }}}
+</style>
 </head>
 <body>
-{{ for(var room in it.rooms) { }}
-	{{=it.rooms[room]}}
+{{ for(var k in it.lights) { }}
+{{=it.lights[k].render()}}
 {{ }}}
 </body>
 </html>

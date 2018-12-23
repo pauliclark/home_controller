@@ -9,13 +9,26 @@ var express = require('express')
 , app = express()
 , render = require('./render')
 ;
-var lights = require("./classes")(app);
+
+app.httpServer = http.createServer(app);
+app.httpServer.listen(3000, function() {
+	console.log('Listening on port %d', app.httpServer.address().port);
+});
+
+app.Gpio={accessible:false}
+//app.Gpio = require('onoff').Gpio;
+var {lights,sockets} = require("./classes")(app);
+app.lights={};
+lights.map(l => {
+	app.lights[l.schema.name]=l;
+})
+app.sockets=sockets;
 lights=lights.map(l => l.render());
 
 app.use(express.static('public'))
 
 app.get('/', function(req, res){
-  res.send(render.dashboard({rooms:lights}));
+  res.send(render.dashboard({lights:app.lights}));
 });
 
 app.use(function(err, req, res, next) {
@@ -23,11 +36,7 @@ app.use(function(err, req, res, next) {
 	res.status(500).send('Something broke!');
 });
 
-var httpServer = http.createServer(app);
-httpServer.listen(3000, function() {
-	console.log('Listening on port %d', httpServer.address().port);
-});
-
+/*
 const chromeLauncher = require('chrome-launcher');
 
 chromeLauncher.launch({
@@ -36,12 +45,12 @@ chromeLauncher.launch({
 }).then(chrome => {
   console.log(`Chrome debugging port running on ${chrome.port}`);
 });
-/*
+*/
 var sr = require('screenres');
 (async () => {
 	const browser = await puppeteer.launch({
 		headless: false,
-		executablePath: '/usr/bin/chromium-browser',
+		//executablePath: '/usr/bin/chromium-browser',
 		args: ['--disable-infobars','--start-fullscreen']
 	});
 	var size = sr.get()
@@ -51,4 +60,4 @@ var sr = require('screenres');
 	process.on('exit', (code) => {
 		browser.close();
 	  });
-})();*/
+})();

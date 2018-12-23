@@ -3,8 +3,8 @@ module.exports = function(app) {
         {
             name:'Hall',
             image:{
-                on:'hallOn.jpg',
-                off:'hallOff.jpg'
+                on:'images/on.jpg',
+                off:'images/off.jpg'
             },
             status:1,
             switch:2
@@ -12,13 +12,70 @@ module.exports = function(app) {
         {
             name:'Kitchen',
             image:{
-                on:'kitchenOn.jpg',
-                off:'kitchenOff.jpg'
+                on:'images/on.jpg',
+                off:'images/off.jpg'
             },
             status:3,
             switch:4
+        },
+        {
+            name:'Kitchen Cabinets',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:4,
+            switch:5
+        },
+        {
+            name:'Lounge',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:6,
+            switch:7
+        },
+        {
+            name:'Lounge wall',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:8,
+            switch:9
+        },
+        {
+            name:'Bedroom',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:10,
+            switch:11
+        },
+        {
+            name:'Boudoir',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:12,
+            switch:13
+        },
+        {
+            name:'Patio',
+            image:{
+                on:'images/on.jpg',
+                off:'images/off.jpg'
+            },
+            status:14,
+            switch:15
         }
     ];
     var light=require('./lights')(app);
-    return schema.map(l => new light(app,l));
+    return {
+        lights:schema.map(l => new light(app,l)),
+        sockets:require('./sockets')(app)
+    };
 }
