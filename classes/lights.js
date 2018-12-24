@@ -8,10 +8,10 @@ module.exports = function(app) {
                 
                 var gpiop = app.gpio.promise;
                  
-                gpiop.setup(this.schema.switch, app.gpio.DIR_OUT,(err,obj) => {
+                gpiop.setup(this.schema.switch, app.gpio.DIR_OUT,app.gpio.EDGE_BOTH,(err,obj) => {
                     _this.switch=obj;
                 })
-                gpiop.setup(this.schema.status, app.gpio.DIR_IN,(err,obj) => {
+                gpiop.setup(this.schema.status, app.gpio.DIR_IN,app.gpio.EDGE_BOTH ,(err,obj) => {
                     _this.status=obj;
                     _this.status.on("change",(c,v) => {
                         console.log(v);
