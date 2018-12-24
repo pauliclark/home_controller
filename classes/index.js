@@ -6,7 +6,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:26,
+            status:21,
             switch:0
         },
         {
