@@ -4,14 +4,27 @@ module.exports = function(app) {
             this.schema=schema;
             this.on=false;
             var _this=this;
-            if (true || app.Gpio.accessible) {
-                this.switch = new app.Gpio(this.schema.switch, 'out');
-                console.log(`GPIO ${this.schema.switch} out`)
-                this.status = new app.Gpio(this.schema.status, 'in');
-                console.log(`GPIO ${this.schema.status} in`)
-                this.status.watch((err,status) => {
-                    _this.statusChanged(err,status)
+            if (true/* || app.Gpio.accessible*/) {
+                
+                var gpiop = gpio.promise;
+                 
+                gpiop.setup(this.schema.switch, gpio.DIR_OUT,(err,obj) => {
+                    _this.switch=obj;
                 })
+                gpiop.setup(this.schema.status, gpio.DIR_IN,(err,obj) => {
+                    _this.status=obj;
+                    _this.status.on("change",(c,v) => {
+                        console.log(v);
+                        _this.statusChanged(err,v)
+                    })
+                })
+                //this.switch = new app.Gpio(this.schema.switch, 'out');
+                console.log(`GPIO ${this.schema.switch} out`)
+                //this.status = new app.Gpio(this.schema.status, 'in');
+                console.log(`GPIO ${this.schema.status} in`)
+                /*this.status.watch((err,status) => {
+                    _this.statusChanged(err,status)
+                })*/
             }else{
                 console.log("GPIO not accessible")
                 this.dummy=false;
@@ -39,7 +52,7 @@ module.exports = function(app) {
             this.on=!this.on;
             console.log("Toggle "+this.schema.switch+" to "+(this.on?'1':'0'))
             this.switch.writeSync(this.on?1:0);
-            if (false && !app.Gpio.accessible) {
+            if (false/* && !app.Gpio.accessible*/) {
                 setTimeout(() => {
                     _this.statusChanged(null,_this.on)
                 },3000)

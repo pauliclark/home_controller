@@ -16,7 +16,11 @@ app.httpServer.listen(3000, function() {
 });
 
 //app.Gpio={accessible:false}
-app.Gpio = require('onoff').Gpio;
+app.gpio = require('rpi-gpio')
+ 
+gpiop.setup(7, gpio.DIR_OUT)
+
+
 var {lights,sockets} = require("./classes")(app);
 app.lights={};
 lights.map(l => {
