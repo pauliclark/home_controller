@@ -6,7 +6,7 @@ module.exports = function(app) {
             var _this=this;
             if (true/* || app.Gpio.accessible*/) {
                 
-                var gpiop = gpio.promise;
+                var gpiop = app.gpio.promise;
                  
                 gpiop.setup(this.schema.switch, gpio.DIR_OUT,(err,obj) => {
                     _this.switch=obj;
