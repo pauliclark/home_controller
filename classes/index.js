@@ -7,7 +7,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:26,
-            switch:2
+            switch:0
         },
         {
             name:'Kitchen',
@@ -16,7 +16,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:22,
-            switch:3
+            switch:2
         },
         {
             name:'Kitchen Cabinets',
@@ -25,7 +25,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:23,
-            switch:4
+            switch:3
         },
         {
             name:'Lounge',
@@ -34,7 +34,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:24,
-            switch:17
+            switch:7
         },
         {
             name:'Lounge wall',
@@ -43,7 +43,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:25,
-            switch:27
+            switch:1
         },
         {
             name:'Bedroom',
@@ -52,7 +52,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:27,
-            switch:22
+            switch:4
         },
         {
             name:'Boudoir',
@@ -61,7 +61,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:28,
-            switch:14
+            switch:5
         },
         {
             name:'Patio',
@@ -70,7 +70,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             status:29,
-            switch:15
+            switch:6
         }
     ];
     var light=require('./lights')(app);
