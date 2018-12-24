@@ -7,9 +7,9 @@ module.exports = function(app) {
             if (true || app.Gpio.accessible) {
                 this.switch = new app.Gpio(this.schema.switch, 'out');
                 this.status = new app.Gpio(this.schema.status, 'in', 'both');
-                this.status.watch(
-                    this.statusChanged
-                )
+                this.status.watch((err,status) => {
+                    _this.statusChanged(err,status)
+                })
             }else{
                 console.log("GPIO not accessible")
                 this.dummy=false;
