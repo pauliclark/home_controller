@@ -11,6 +11,7 @@ module.exports = function(app) {
                     this.statusChanged
                 )
             }else{
+                console.log("GPIO not accessible")
                 this.dummy=false;
                 this.switch = {
                     writeSync: (value) => {
@@ -35,11 +36,11 @@ module.exports = function(app) {
             const _this=this;
             this.on=!this.on;
             this.switch.writeSync(this.on);
-            //if (app.Gpio.accessible) {
+            if (!app.Gpio.accessible) {
                 setTimeout(() => {
                     _this.statusChanged(null,_this.on)
                 },3000)
-            //}
+            }
         }
         render() {
             return `<button type='button' class='lights ${this.schema.name.toLowerCase().replace(/\W/g,'')}'>${this.schema.name}</button>`
