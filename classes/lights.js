@@ -35,6 +35,8 @@ module.exports = function(app) {
         toggle() {
             const _this=this;
             this.on=!this.on;
+            console.log(this);
+            console.log("Toggle "+this.schema.switch)
             this.switch.writeSync(this.on);
             if (!app.Gpio.accessible) {
                 setTimeout(() => {
