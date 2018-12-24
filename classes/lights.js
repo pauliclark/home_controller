@@ -6,7 +6,7 @@ module.exports = function(app) {
             var _this=this;
             if (true || app.Gpio.accessible) {
                 this.switch = new app.Gpio(this.schema.switch, 'out');
-                this.status = new app.Gpio(this.schema.status, 'in', 'both');
+                this.status = new app.Gpio(this.schema.status, 'in');
                 this.status.watch((err,status) => {
                     _this.statusChanged(err,status)
                 })
