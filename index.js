@@ -15,8 +15,8 @@ app.httpServer.listen(3000, function() {
 	console.log('Listening on port %d', app.httpServer.address().port);
 });
 
-app.Gpio={accessible:false}
-//app.Gpio = require('onoff').Gpio;
+//app.Gpio={accessible:false}
+app.Gpio = require('onoff').Gpio;
 var {lights,sockets} = require("./classes")(app);
 app.lights={};
 lights.map(l => {
