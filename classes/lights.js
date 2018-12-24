@@ -4,7 +4,7 @@ module.exports = function(app) {
             this.schema=schema;
             this.on=false;
             var _this=this;
-            if (app.Gpio.accessible) {
+            if (true || app.Gpio.accessible) {
                 this.switch = new app.Gpio(this.schema.switch, 'out');
                 this.status = new app.Gpio(this.schema.status, 'in', 'both');
                 this.status.watch(
@@ -38,7 +38,7 @@ module.exports = function(app) {
             console.log(this);
             console.log("Toggle "+this.schema.switch)
             this.switch.writeSync(this.on);
-            if (!app.Gpio.accessible) {
+            if (false && !app.Gpio.accessible) {
                 setTimeout(() => {
                     _this.statusChanged(null,_this.on)
                 },3000)
