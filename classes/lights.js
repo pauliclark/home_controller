@@ -53,7 +53,7 @@ module.exports = function(app) {
                     console.log('Error: ',this.schema.status, err.toString())
                 })
                 
-                _this.gpiop.on("change",(c,v) => {
+                app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
                         console.log(c,v);
                         _this.statusChanged(err,v)
