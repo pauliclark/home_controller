@@ -33,7 +33,7 @@ module.exports = function(app) {
                 app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
                 app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
                 _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
-                _this.statusChanged(_this.lighton)
+                //_this.statusChanged(_this.lighton)
 
                 /*setInterval(function() {
                     _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
