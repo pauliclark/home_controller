@@ -38,7 +38,7 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.switch.toString(), err.toString())
                 })
-                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
+                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_NONE)
                 .then(() => {
                     _this.gpiop.read(this.bcm[this.schema.status.toString()],(err,v) => {
                         if (!!err) {
@@ -59,7 +59,7 @@ module.exports = function(app) {
                         if (v!=_this.lighton) {
                             _this.lighton=v;
                             if (c==20) console.log(new Date(),c,v);
-                            //_this.statusChanged(null,v)
+                            _this.statusChanged(null,v)
                         }
                     }
                 })
@@ -93,7 +93,7 @@ module.exports = function(app) {
             }
         }
         statusChanged(err,status) {
-            console.log('broadcast',this.schema,status);
+            //console.log('broadcast',this.schema,status);
             var obj={};
             obj[this.schema.name]=status;
             app.sockets.broadcast(obj)
