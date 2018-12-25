@@ -29,7 +29,7 @@ module.exports = function(app) {
             if (true/* || app.Gpio.accessible*/) {
                 
                  var channelIn=this.bcm[this.schema.status.toString()];
-                console.log(this.schema.switch,app.gpio.DIR_OUT)
+                //console.log(this.schema.switch,app.gpio.DIR_OUT)
                 this.gpiop.setup(this.bcm[this.schema.switch.toString()], app.gpio.DIR_OUT)
                 .then(() => {
                     console.log("Success",this.schema.switch,app.gpio.DIR_OUT)
@@ -40,7 +40,8 @@ module.exports = function(app) {
                 })
                 this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN)
                 .then(function () {
-                    _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
+                    app.gpio.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
+                        console.log(arguments)
                         if (!!err) {
                             console.warn(e)
                         }else{
