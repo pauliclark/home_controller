@@ -46,7 +46,7 @@ module.exports = function(app) {
                         }else{
                             _this.lighton=v;
                             console.log(_this.schema.status,v);
-                            //_this.statusChanged(null,_this.lighton)
+                            _this.statusChanged(null,_this.lighton)
                         }
                     })
                 })
@@ -58,7 +58,7 @@ module.exports = function(app) {
                     if (c==channelIn) {
                         if (v!=_this.lighton) {
                             console.log(c,v);
-                            _this.statusChanged(null,v)
+                            //_this.statusChanged(null,v)
                         }
                     }
                 })
