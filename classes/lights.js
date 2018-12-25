@@ -55,8 +55,10 @@ module.exports = function(app) {
                 
                 app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
-                        console.log(c,v);
-                        _this.statusChanged(null,v)
+                        if (v!=_this.lighton) {
+                            console.log(c,v);
+                            _this.statusChanged(null,v)
+                        }
                     }
                 })
 
