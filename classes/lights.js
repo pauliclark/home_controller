@@ -86,6 +86,10 @@ module.exports = function(app) {
                   }
             }
         }
+        destroy() {
+            app.gpio.close(this.bcm[this.schema.switch.toString()])
+            app.gpio.close(this.bcm[this.schema.status.toString()])
+        }
         statusChanged(err,status) {
             //console.log('broadcast',this.schema,status);
             var obj={};

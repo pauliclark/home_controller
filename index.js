@@ -68,3 +68,8 @@ chromeLauncher.launch({
 		browser.close();
 	  });
 })();*/
+process.on("exit",(code) => {
+	for(var k in app.lights) {
+		app.lights[k].destroy();
+	}
+})
