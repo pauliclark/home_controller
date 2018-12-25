@@ -53,8 +53,20 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.status, err.toString())
                 })
-                
-                app.gpio.on("change",(c,v) => {
+                setInterval(() => {
+                    _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
+                        if (!!err) {
+                            console.warn(e)
+                        }else{
+                            if (v!=_this.lighton) {
+                                _this.lighton=v;
+                                if (_this.bcm[_this.schema.status.toString()]==20) console.log(_this.schema.status,v);
+                                _this.statusChanged(null,_this.lighton)
+                            }
+                        }
+                    })
+                },100)
+                /*app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
                         if (v!=_this.lighton) {
                             _this.lighton=v;
@@ -62,7 +74,7 @@ module.exports = function(app) {
                             _this.statusChanged(null,v)
                         }
                     }
-                })
+                })*/
 
                     /*_this.status.on("change",(c,v) => {
                         console.log(v);
