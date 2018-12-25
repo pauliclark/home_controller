@@ -25,7 +25,7 @@ module.exports = function(app) {
                     console.log("Status requested")
                     var stats={};
                     for(var k in app.lights) {
-                        stats[k]=app.lights[k].on;
+                        stats[k]=app.lights[k].lighton;
                     }
                     console.log(stats);
                     client.emit("status",stats)

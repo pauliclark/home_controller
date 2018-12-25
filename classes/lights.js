@@ -3,6 +3,7 @@ module.exports = function(app) {
         constructor(app,schema) {
             this.schema=schema;
             this.on=false;
+            this.lighton=false;
             var _this=this;
             this.bcm={
                 '0':17,
@@ -27,7 +28,7 @@ module.exports = function(app) {
             this.gpiop = app.gpio.promise;
             if (true/* || app.Gpio.accessible*/) {
                 
-                 
+                 var channelIn=this.bcm[this.schema.status.toString()];
                 console.log(this.schema.switch,app.gpio.DIR_OUT)
                 this.gpiop.setup(this.bcm[this.schema.switch.toString()], app.gpio.DIR_OUT)
                 .then(() => {
@@ -39,11 +40,26 @@ module.exports = function(app) {
                 })
                 this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
                 .then(() => {
-
+                    _this.gpiop.read(this.bcm[this.schema.status.toString()],(err,v) => {
+                        if (!!err) {
+                            console.warn(e)
+                        }else{
+                            _this.lighton=v;
+                            _this.statusChanged(null,_this.lighton)
+                        }
+                    })
                 })
                 .catch((err) => {
                     console.log('Error: ',this.schema.status, err.toString())
                 })
+                
+                _this.gpiop.on("change",(c,v) => {
+                    if (c==channelIn) {
+                        console.log(c,v);
+                        _this.statusChanged(err,v)
+                    }
+                })
+
                     /*_this.status.on("change",(c,v) => {
                         console.log(v);
                         _this.statusChanged(err,v)
@@ -82,7 +98,10 @@ module.exports = function(app) {
             const _this=this;
             this.on=!this.on;
             console.log("Toggle "+this.schema.switch+" to "+(this.on?'1':'0'))
-            this.gpiop.write(this.schema.switch, this.on)
+            
+            this.gpiop.write(this.bcm[this.schema.switch.toString()],this.on,(err) => {
+                if (!!err) console.warn(err);
+            })
             if (false/* && !app.Gpio.accessible*/) {
                 setTimeout(() => {
                     _this.statusChanged(null,_this.on)
