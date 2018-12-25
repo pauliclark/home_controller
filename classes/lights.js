@@ -4,21 +4,40 @@ module.exports = function(app) {
             this.schema=schema;
             this.on=false;
             var _this=this;
+            this.bcm={
+                '0':17,
+                '1':18,
+                '2':27,
+                '3':22,
+                '4':23,
+                '5':24,
+                '6':25,
+                '7':4,
+                '21':5,
+                '22':6,
+                '23':13,
+                '24':19,
+                '25':26,
+                '26':12,
+                '27':16,
+                '28':20,
+                '29':21
+            }
             app.gpio.setMode(app.gpio.MODE_BCM)
             this.gpiop = app.gpio.promise;
             if (true/* || app.Gpio.accessible*/) {
                 
                  
                 console.log(this.schema.switch,app.gpio.DIR_OUT)
-                this.gpiop.setup(this.schema.switch, app.gpio.DIR_OUT)
+                this.gpiop.setup(this.bcm[this.schema.switch.toString()], app.gpio.DIR_OUT)
                 .then(() => {
                     console.log("Success",this.schema.switch,app.gpio.DIR_OUT)
                     return true;//gpiop.write(7, true)
                 })
                 .catch((err) => {
-                    console.log('Error: ',this.schema.switch, err.toString())
+                    console.log('Error: ',this.schema.switch.toString(), err.toString())
                 })
-                this.gpiop.setup(this.schema.status, app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
+                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
                 .then(() => {
 
                 })
