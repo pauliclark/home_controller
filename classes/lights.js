@@ -56,7 +56,7 @@ module.exports = function(app) {
                 app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
                         console.log(c,v);
-                        _this.statusChanged(err,v)
+                        _this.statusChanged(null,v)
                     }
                 })
 
