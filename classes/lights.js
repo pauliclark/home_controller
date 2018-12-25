@@ -58,7 +58,7 @@ module.exports = function(app) {
                     if (c==channelIn) {
                         if (v!=_this.lighton) {
                             _this.lighton=v;
-                            if (c==26) console.log(c,v);
+                            if (c==5) console.log(new Date(),c,v);
                             //_this.statusChanged(null,v)
                         }
                     }
