@@ -24,36 +24,17 @@ module.exports = function(app) {
                 '28':20,
                 '29':21
             }
-            app.gpio.setMode(app.gpio.MODE_BCM)
-            this.gpiop = app.gpio.promise;
+            //app.gpio.setMode(app.gpio.MODE_BCM)
+            //this.gpiop = app.gpio.promise;
             if (true/* || app.Gpio.accessible*/) {
                 
                  var channelIn=this.bcm[this.schema.status.toString()];
                 //console.log(this.schema.switch,app.gpio.DIR_OUT)
-                this.gpiop.setup(this.bcm[this.schema.switch.toString()], app.gpio.DIR_OUT)
-                .then(() => {
-                    console.log("Success",this.schema.switch,app.gpio.DIR_OUT)
-                    return true;//gpiop.write(7, true)
-                })
-                .catch((err) => {
-                    console.log('Error: ',this.schema.switch.toString(), err.toString())
-                })
-                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN)
-                .then(function () {
-                    app.gpio.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
-                        console.log(arguments)
-                        if (!!err) {
-                            console.warn(e)
-                        }else{
-                            _this.lighton=v;
-                            console.log(_this.schema.status,v);
-                            _this.statusChanged(null,_this.lighton)
-                        }
-                    })
-                })
-                .catch((err) => {
-                    console.log('Error: ',this.schema.status, err.toString())
-                })
+                app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
+                app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
+                _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
+                _this.statusChanged(_this.lighton)
+
                 /*setInterval(function() {
                     _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
                         if (!!err) {
@@ -116,14 +97,7 @@ module.exports = function(app) {
             this.on=!this.on;
             console.log("Toggle "+this.schema.switch+" to "+(this.on?'1':'0'))
             
-            this.gpiop.write(this.bcm[this.schema.switch.toString()],this.on,(err) => {
-                if (!!err) console.warn(err);
-            })
-            if (false/* && !app.Gpio.accessible*/) {
-                setTimeout(() => {
-                    _this.statusChanged(null,_this.on)
-                },3000)
-            }
+            app.gpio.write(this.bcm[this.schema.switch.toString()],this.on?1:0)
         }
         render() {
             return `<button type='button' class='lights ${this.schema.name.toLowerCase().replace(/\W/g,'')}'>${this.schema.name}</button>`

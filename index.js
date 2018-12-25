@@ -16,8 +16,12 @@ app.httpServer.listen(3000, function() {
 });
 
 //app.Gpio={accessible:false}
-app.gpio = require('rpi-gpio')
- 
+app.gpio = require('rpio')
+app.gpio.init({
+	gpiomem: true,          /* Use /dev/gpiomem */
+	mapping: 'gpio',    /* Use the P1-P40 numbering scheme */
+	mock: undefined,        /* Emulate specific hardware in mock mode */
+})
 
 
 var {lights,sockets} = require("./classes")(app);
