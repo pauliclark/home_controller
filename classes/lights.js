@@ -38,9 +38,9 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.switch.toString(), err.toString())
                 })
-                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
+                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_NONE)
                 .then(() => {
-                    _this.gpiop.read(this.bcm[this.schema.status.toString()],(err,v) => {
+                    _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
                         if (!!err) {
                             console.warn(e)
                         }else{
@@ -53,7 +53,7 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.status, err.toString())
                 })
-                setInterval(() => {
+                setInterval(function() {
                     _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
                         if (!!err) {
                             console.warn(e)
