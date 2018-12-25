@@ -4,8 +4,8 @@ module.exports = function(app) {
             this.schema=schema;
             this.on=false;
             var _this=this;
+            app.gpio.setmode(app.gpio.BCM)
             this.gpiop = app.gpio.promise;
-            this.gpiop.setmode(GPIO.BCM)
             if (true/* || app.Gpio.accessible*/) {
                 
                  
