@@ -45,7 +45,8 @@ module.exports = function(app) {
                             console.warn(e)
                         }else{
                             _this.lighton=v;
-                            _this.statusChanged(null,_this.lighton)
+                            console.log(_this.schema.status,v);
+                            //_this.statusChanged(null,_this.lighton)
                         }
                     })
                 })
