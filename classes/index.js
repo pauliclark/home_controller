@@ -1,7 +1,7 @@
 module.exports = function(app) {
     var schema=[
         {
-            name:'Hall',
+            name:'Kitchen Cabinets?',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -10,7 +10,7 @@ module.exports = function(app) {
             switch:0
         },
         {
-            name:'Kitchen',
+            name:'Patio?',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -19,7 +19,7 @@ module.exports = function(app) {
             switch:2
         },
         {
-            name:'Kitchen Cabinets',
+            name:'Hall',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -28,7 +28,7 @@ module.exports = function(app) {
             switch:3
         },
         {
-            name:'Lounge',
+            name:'Bedroom',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -37,7 +37,7 @@ module.exports = function(app) {
             switch:7
         },
         {
-            name:'Lounge wall',
+            name:'Kitchen',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -46,7 +46,7 @@ module.exports = function(app) {
             switch:1
         },
         {
-            name:'Bedroom',
+            name:'Boudoir',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -55,7 +55,7 @@ module.exports = function(app) {
             switch:4
         },
         {
-            name:'Boudoir',
+            name:'Lounge wall',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -64,7 +64,7 @@ module.exports = function(app) {
             switch:5
         },
         {
-            name:'Patio',
+            name:'Lounge',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
