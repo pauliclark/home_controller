@@ -8,19 +8,20 @@ module.exports = function(app) {
             if (true/* || app.Gpio.accessible*/) {
                 
                  
-                this.gpiop.setup(this.schema.switch, app.gpio.DIR_OUT,)
+                this.gpiop.setup(this.schema.switch, app.gpio.DIR_OUT)
                 .then(() => {
+                    console.log(this.schema.switch,app.gpio.DIR_OUT)
                     return true;//gpiop.write(7, true)
                 })
                 .catch((err) => {
-                    console.log('Error: ', err.toString())
+                    console.log('Error: ',this.schema.switch, err.toString())
                 })
                 this.gpiop.setup(this.schema.status, app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
                 .then(() => {
 
                 })
                 .catch((err) => {
-                    console.log('Error: ', err.toString())
+                    console.log('Error: ',this.schema.status, err.toString())
                 })
                     /*_this.status.on("change",(c,v) => {
                         console.log(v);
