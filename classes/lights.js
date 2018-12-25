@@ -53,7 +53,7 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.status, err.toString())
                 })
-                setInterval(function() {
+                /*setInterval(function() {
                     _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
                         if (!!err) {
                             console.warn(e)
@@ -65,7 +65,7 @@ module.exports = function(app) {
                             }
                         }
                     })
-                },100)
+                },100)*/
                 /*app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
                         if (v!=_this.lighton) {
