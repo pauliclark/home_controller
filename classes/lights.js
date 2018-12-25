@@ -38,7 +38,7 @@ module.exports = function(app) {
                 .catch((err) => {
                     console.log('Error: ',this.schema.switch.toString(), err.toString())
                 })
-                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_NONE)
+                this.gpiop.setup(this.bcm[this.schema.status.toString()], app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
                 .then(() => {
                     _this.gpiop.read(this.bcm[this.schema.status.toString()],(err,v) => {
                         if (!!err) {
