@@ -28,6 +28,7 @@
     "fs": "0.0.1-security",
     "puppeteer": "^1.11.0",
     "rpi-gpio": "^2.1.2",
+    "rpio": "^1.0.11",
     "screenres": "^2.0.1",
     "socketio": "^1.0.0"
   }
