@@ -35,19 +35,14 @@ module.exports = function(app) {
                 _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
                 //_this.statusChanged(_this.lighton)
 
-                /*setInterval(function() {
-                    _this.gpiop.read(_this.bcm[_this.schema.status.toString()],(err,v) => {
-                        if (!!err) {
-                            console.warn(e)
-                        }else{
-                            if (v!=_this.lighton) {
-                                _this.lighton=v;
-                                if (_this.bcm[_this.schema.status.toString()]==20) console.log(_this.schema.status,v);
-                                _this.statusChanged(null,_this.lighton)
-                            }
-                        }
-                    })
-                },100)*/
+                setInterval(function() {
+                    var v = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
+                    if (_this.lighton!=v) {
+                        _this.lighton=v;
+                        if (_this.bcm[_this.schema.status.toString()]==20) console.log(_this.schema.status,v);
+                        _this.statusChanged(null,_this.lighton)
+                    }
+                },100)
                 /*app.gpio.on("change",(c,v) => {
                     if (c==channelIn) {
                         if (v!=_this.lighton) {
