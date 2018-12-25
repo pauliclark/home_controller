@@ -4,22 +4,29 @@ module.exports = function(app) {
             this.schema=schema;
             this.on=false;
             var _this=this;
+            this.gpiop = app.gpio.promise;
             if (true/* || app.Gpio.accessible*/) {
                 
-                var gpiop = app.gpio.promise;
                  
-                gpiop.setup(this.schema.switch, app.gpio.DIR_OUT,app.gpio.EDGE_BOTH,(err,obj) => {
-                    console.log(obj);
-                    _this.switch=obj;
+                this.gpiop.setup(this.schema.switch, app.gpio.DIR_OUT,)
+                .then(() => {
+                    return true;//gpiop.write(7, true)
                 })
-                gpiop.setup(this.schema.status, app.gpio.DIR_IN,app.gpio.EDGE_BOTH ,(err,obj) => {
-                    console.log(obj);
-                    _this.status=obj;
+                .catch((err) => {
+                    console.log('Error: ', err.toString())
+                })
+                this.gpiop.setup(this.schema.status, app.gpio.DIR_IN,app.gpio.EDGE_BOTH)
+                .then(() => {
+
+                })
+                .catch((err) => {
+                    console.log('Error: ', err.toString())
+                })
                     /*_this.status.on("change",(c,v) => {
                         console.log(v);
                         _this.statusChanged(err,v)
                     })*/
-                })
+                    
                 //this.switch = new app.Gpio(this.schema.switch, 'out');
                 console.log(`GPIO ${this.schema.switch} out`)
                 //this.status = new app.Gpio(this.schema.status, 'in');
@@ -53,7 +60,7 @@ module.exports = function(app) {
             const _this=this;
             this.on=!this.on;
             console.log("Toggle "+this.schema.switch+" to "+(this.on?'1':'0'))
-            this.switch.writeSync(this.on?1:0);
+            this.gpiop.write(this.schema.switch, this.on)
             if (false/* && !app.Gpio.accessible*/) {
                 setTimeout(() => {
                     _this.statusChanged(null,_this.on)
