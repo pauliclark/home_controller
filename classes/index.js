@@ -75,7 +75,7 @@ module.exports = function(app) {
     ];
     var light=require('./lights')(app);
     return {
-        lights:schema.map(l => new light(app,l)),
-        sockets:require('./sockets')(app)
+        sockets:require('./sockets')(app),
+        lights:schema.map(l => new light(app,l))
     };
 }
