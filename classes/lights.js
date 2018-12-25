@@ -8,9 +8,10 @@ module.exports = function(app) {
             if (true/* || app.Gpio.accessible*/) {
                 
                  
+                console.log(this.schema.switch,app.gpio.DIR_OUT)
                 this.gpiop.setup(this.schema.switch, app.gpio.DIR_OUT)
                 .then(() => {
-                    console.log(this.schema.switch,app.gpio.DIR_OUT)
+                    console.log("Success",this.schema.switch,app.gpio.DIR_OUT)
                     return true;//gpiop.write(7, true)
                 })
                 .catch((err) => {
