@@ -46,7 +46,7 @@ module.exports = function(app) {
             status:0
         },
         {
-            name:'Boudoir',
+            name:'Bedroom',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
