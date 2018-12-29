@@ -6,8 +6,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:22,
-            status:6
+            switch:21,
+            status:4
         },
         {
             name:'Kitchen cabinets',
@@ -15,8 +15,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:21,
-            status:4
+            switch:22,
+            status:6
         },
         {
             name:'Lounge',
