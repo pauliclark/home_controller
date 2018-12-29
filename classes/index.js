@@ -10,12 +10,12 @@ module.exports = function(app) {
             status:6
         },
         {
-            name:'Kitchen canbinets',
+            name:'Kitchen cabinets',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:25,
+            switch:21,
             status:4
         },
         {
