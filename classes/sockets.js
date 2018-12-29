@@ -18,11 +18,9 @@ module.exports = function(app) {
                     _this.clients.splice(_this.clients.indexOf(client),1);
                 })
                 client.on('toggle', function (data) {
-                    //console.log(Object.keys(data));
                     _this.toggle(Object.keys(data));
                 })
                 client.on('off', function (data) {
-                    //console.log(Object.keys(data));
                     _this.off();
                 })
                 client.on('status', function () {

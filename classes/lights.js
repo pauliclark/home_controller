@@ -49,6 +49,7 @@ module.exports = function(app) {
                 },100)
                 console.log(`GPIO ${this.schema.switch} out`)
                 console.log(`GPIO ${this.schema.status} in`)
+
         }
         destroy() {
             app.gpio.close(this.bcm[this.schema.switch.toString()])
