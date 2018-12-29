@@ -45,8 +45,10 @@ var socketClient=function() {
     this.connected=function() {
         console.log("Connected");
         this.socket.emit("status");
+        $(body).addClass("connected");
     }
     this.disconnected=function() {
+        $(body).removeClass("connected");
         console.log("disconnected");
     }
     this.toggle=function(k) {
