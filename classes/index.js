@@ -69,7 +69,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:29,
+            switch:26,
             status:6
         }
     ];
