@@ -1,25 +1,25 @@
 module.exports = function(app) {
     var schema=[
         {
-            name:'Kitchen Cabinets?',
+            name:'Kitchen',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:21,
-            status:0
+            switch:24,
+            status:6
         },
         {
-            name:'Patio?',
+            name:'Kitchen canbinets',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:22,
-            status:2
+            switch:25,
+            status:4
         },
         {
-            name:'Hall',
+            name:'Lounge',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
@@ -28,22 +28,22 @@ module.exports = function(app) {
             status:3
         },
         {
-            name:'Bedroom',
+            name:'Lounge Wall',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
             switch:24,
-            status:7
+            status:2
         },
         {
-            name:'Kitchen',
+            name:'Boudoir',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
             switch:25,
-            status:1
+            status:0
         },
         {
             name:'Boudoir',
@@ -52,25 +52,25 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             switch:27,
-            status:4
+            status:5
         },
         {
-            name:'Lounge wall',
+            name:'Patio',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
             switch:28,
-            status:5
+            status:5 // ????
         },
         {
-            name:'Lounge',
+            name:'Hall',
             image:{
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
             switch:26,
-            status:6
+            status:1
         }
     ];
     var light=require('./lights')(app);
