@@ -27,7 +27,7 @@ $(document).ready(function() {
         console.log(obj);
         obj.client = new socketClient();
         obj.lights = {};
-        $('button').get().map(b => {
+        $('button.lights').get().map(b => {
            var l = new light(b);
            l.ontoggle=function(k) {
                console.log(k);
@@ -35,6 +35,9 @@ $(document).ready(function() {
            }
             obj.lights[l.button.text()]=l;
         });
+        $('button.alloff').click(function() {
+            obj.client.off();
+        })
         console.log(obj);
     })(window.lights={})
 })
@@ -51,6 +54,11 @@ var socketClient=function() {
         var obj={};
         obj[k]=true;
         this.socket.emit('toggle',obj);
+    }
+    this.off=function() {
+        console.log("off");
+        var obj={};
+        this.socket.emit('off',obj);
     }
     this.status=function(data) {
         console.log(data,window.lights.lights);

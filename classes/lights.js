@@ -28,7 +28,7 @@ module.exports = function(app) {
                 app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
                 app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
                 _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
-                //_this.statusChanged(_this.lighton)
+                app.gpio.write(this.bcm[this.schema.switch.toString()],this.on?1:0)
                 var values=[];
                 setInterval(function() {
                     var v = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
@@ -58,6 +58,9 @@ module.exports = function(app) {
             var obj={};
             obj[this.schema.name]=status;
             app.sockets.broadcast(obj)
+        }
+        off() {
+            if (this.lighton) this.toggle();
         }
         toggle() {
             const _this=this;

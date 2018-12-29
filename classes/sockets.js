@@ -21,6 +21,10 @@ module.exports = function(app) {
                     //console.log(Object.keys(data));
                     _this.toggle(Object.keys(data));
                 })
+                client.on('off', function (data) {
+                    //console.log(Object.keys(data));
+                    _this.off();
+                })
                 client.on('status', function () {
                     console.log("Status requested")
                     var stats={};
@@ -38,6 +42,9 @@ module.exports = function(app) {
             this.clients.map(c => {
                 c.emit("status",data)
             })
+        }
+        off() {
+            for(var name in app.lights) app.lights[name].off();
         }
         toggle(names) {
             names.map(name => {
