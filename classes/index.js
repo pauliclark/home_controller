@@ -6,7 +6,7 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            switch:24,
+            switch:22,
             status:6
         },
         {
@@ -61,7 +61,7 @@ module.exports = function(app) {
                 off:'images/off.jpg'
             },
             switch:28,
-            status:5 // ????
+            status:7 // ????
         },
         {
             name:'Hall',
