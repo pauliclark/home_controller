@@ -6,8 +6,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:21,
-            switch:0
+            switch:21,
+            status:0
         },
         {
             name:'Patio?',
@@ -15,8 +15,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:22,
-            switch:2
+            switch:22,
+            status:2
         },
         {
             name:'Hall',
@@ -24,8 +24,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:23,
-            switch:3
+            switch:23,
+            status:3
         },
         {
             name:'Bedroom',
@@ -33,8 +33,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:24,
-            switch:7
+            switch:24,
+            status:7
         },
         {
             name:'Kitchen',
@@ -42,8 +42,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:25,
-            switch:1
+            switch:25,
+            status:1
         },
         {
             name:'Boudoir',
@@ -51,8 +51,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:27,
-            switch:4
+            switch:27,
+            status:4
         },
         {
             name:'Lounge wall',
@@ -60,8 +60,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:28,
-            switch:5
+            switch:28,
+            status:5
         },
         {
             name:'Lounge',
@@ -69,8 +69,8 @@ module.exports = function(app) {
                 on:'images/on.jpg',
                 off:'images/off.jpg'
             },
-            status:29,
-            switch:6
+            switch:29,
+            status:6
         }
     ];
     var light=require('./lights')(app);
