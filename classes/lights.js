@@ -28,7 +28,9 @@ module.exports = function(app) {
                 app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
                 app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
                 _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
-                app.gpio.write(this.bcm[this.schema.switch.toString()],this.on?1:0)
+                setTimeout(function() {
+                    app.gpio.write(_this.bcm[_this.schema.switch.toString()],_this.on?1:0)
+                },1000);
                 var values=[];
                 setInterval(function() {
                     var v = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
