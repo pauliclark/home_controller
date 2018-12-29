@@ -86,6 +86,7 @@ module.exports = function(app) {
             app.gpio.close(this.bcm[this.schema.status.toString()])
         }
         statusChanged(err,status) {
+            console.log("Light "+this.schema.name+" on BCM "+this.bcm[this.schema.status.toString()]+" to "+status);
             //console.log('broadcast',this.schema,status);
             var obj={};
             obj[this.schema.name]=status;
@@ -94,7 +95,7 @@ module.exports = function(app) {
         toggle() {
             const _this=this;
             this.on=!this.on;
-            console.log("Toggle "+this.schema.switch+" to "+(this.on?'1':'0'))
+            console.log("Toggle "+this.schema.name+" on BCM "+this.bcm[this.schema.switch.toString()]+" to "+(this.on?'1':'0'))
             
             app.gpio.write(this.bcm[this.schema.switch.toString()],this.on?1:0)
         }
