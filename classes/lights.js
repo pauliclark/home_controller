@@ -27,8 +27,8 @@ module.exports = function(app) {
                  var channelIn=this.bcm[this.schema.status.toString()];
                 app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
                 app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
-                _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
                 setTimeout(function() {
+                    _this.lighton = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
                     app.gpio.write(_this.bcm[_this.schema.switch.toString()],_this.on?1:0)
                 },1000);
                 var values=[];
