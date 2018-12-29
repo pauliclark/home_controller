@@ -24,62 +24,29 @@ module.exports = function(app) {
                 '28':20,
                 '29':21
             }
-            //app.gpio.setMode(app.gpio.MODE_BCM)
-            //this.gpiop = app.gpio.promise;
-            if (true/* || app.Gpio.accessible*/) {
-                
                  var channelIn=this.bcm[this.schema.status.toString()];
-                //console.log(this.schema.switch,app.gpio.DIR_OUT)
                 app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
                 app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
                 _this.lighton = app.gpio.read(this.bcm[this.schema.status.toString()]);
                 //_this.statusChanged(_this.lighton)
-
+                var values=[];
                 setInterval(function() {
                     var v = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
                     if (_this.lighton!=v) {
-                        _this.lighton=v;
-                        if (_this.bcm[_this.schema.status.toString()]==20) console.log(_this.schema.status,v);
-                        _this.statusChanged(null,_this.lighton)
-                    }
-                },100)
-                /*app.gpio.on("change",(c,v) => {
-                    if (c==channelIn) {
-                        if (v!=_this.lighton) {
+                        values.push(v);
+                        while(values.length>3) values.shift();
+                        var sum = values.reduce(function(a, b) { return a + b; });
+                        var avg = sum / values.length;
+                        var v=(Math.round(avg)==1);
+                        if (_this.lighton!=v) {
                             _this.lighton=v;
-                            if (c==20) console.log(new Date(),c,v);
-                            _this.statusChanged(null,v)
+                            if (_this.bcm[_this.schema.status.toString()]==20) console.log(_this.schema.status,v);
+                            _this.statusChanged(null,_this.lighton)
                         }
                     }
-                })*/
-
-                    /*_this.status.on("change",(c,v) => {
-                        console.log(v);
-                        _this.statusChanged(err,v)
-                    })*/
-                    
-                //this.switch = new app.Gpio(this.schema.switch, 'out');
+                },100)
                 console.log(`GPIO ${this.schema.switch} out`)
-                //this.status = new app.Gpio(this.schema.status, 'in');
                 console.log(`GPIO ${this.schema.status} in`)
-                /*this.status.watch((err,status) => {
-                    _this.statusChanged(err,status)
-                })*/
-            }else{
-                console.log("GPIO not accessible")
-                this.dummy=false;
-                this.switch = {
-                    writeSync: (value) => {
-                        this.dummy=value;
-                      console.log(`${this.schema.name}` + value);
-                    }
-                  };
-                  this.status = {
-                      readSync:() => {
-                        return _this.dummy;
-                      }
-                  }
-            }
         }
         destroy() {
             app.gpio.close(this.bcm[this.schema.switch.toString()])
@@ -100,7 +67,7 @@ module.exports = function(app) {
             app.gpio.write(this.bcm[this.schema.switch.toString()],this.on?1:0)
         }
         render() {
-            return `<button type='button' class='lights ${this.schema.name.toLowerCase().replace(/\W/g,'')}'>${this.schema.name}</button>`
+            return `<button type='button' class='lights ${this.schema.name.toLowerCase().replace(/\W/g,'')}'><div>${this.schema.name}</div></button>`
         }
     }
 }

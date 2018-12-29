@@ -3,8 +3,8 @@ module.exports = function(app) {
         {
             name:'Kitchen',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/kitchen.jpg',
+                off:'images/kitchen.jpg'
             },
             switch:21,
             status:6
@@ -12,8 +12,8 @@ module.exports = function(app) {
         {
             name:'Kitchen cabinets',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/kitchen-cabinets.jpg',
+                off:'images/kitchen-cabinets.jpg'
             },
             switch:22,
             status:4
@@ -21,8 +21,8 @@ module.exports = function(app) {
         {
             name:'Lounge',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/lounge.jpg',
+                off:'images/lounge.jpg'
             },
             switch:23,
             status:3
@@ -30,8 +30,8 @@ module.exports = function(app) {
         {
             name:'Lounge Wall',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/lounge-wall.jpg',
+                off:'images/lounge-wall.jpg'
             },
             switch:24,
             status:2
@@ -39,8 +39,8 @@ module.exports = function(app) {
         {
             name:'Boudoir',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/boudoir.jpg',
+                off:'images/boudoir.jpg'
             },
             switch:25,
             status:0
@@ -48,8 +48,8 @@ module.exports = function(app) {
         {
             name:'Bedroom',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/bedroom.jpg',
+                off:'images/bedroom.jpg'
             },
             switch:27,
             status:5
@@ -57,8 +57,8 @@ module.exports = function(app) {
         {
             name:'Patio',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/patio.jpg',
+                off:'images/patio.jpg'
             },
             switch:28,
             status:7 // ????
@@ -66,8 +66,8 @@ module.exports = function(app) {
         {
             name:'Hall',
             image:{
-                on:'images/on.jpg',
-                off:'images/off.jpg'
+                on:'images/hall.jpg',
+                off:'images/hall.jpg'
             },
             switch:26,
             status:1

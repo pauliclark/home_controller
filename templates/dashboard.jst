@@ -4,17 +4,38 @@
 <script src='/jquery/dist/jquery.slim.min.js'></script>
 <script src='/index.js'></script>
 <style>
+body{
+	background:#000;
+	padding:0px;
+}
 .lights{
 	display:inline-block;
 	width:50%;
 	height:20%;
 	background-size:cover;
 	background-position:center center;
-	border:1px solid #DDD;
-	cursor:pointer;
+	border:5px solid #000;
+	cursor:none;
+	position:relative;
+	div{
+		position:absolute;
+		top:50%;
+		left:0px;
+		width:100%;
+		transition:translateY(-50%);
+		background:rgba(0,0,0,0.3);
+		color:#fff;
+	}
 }
+@media screen and (orientation:landscape) { 
+	width:25%;
+	height:50%;
+ }
 .lights.on{
-	border:1px solid #F00;
+	border-color:#F00;
+	div{
+		background:rgba(255,0,0,0.3);
+	}
 }
 {{ for(var k in it.lights) { }}
 	.{{=k.toLowerCase().replace(/\W/g,'')}}{
