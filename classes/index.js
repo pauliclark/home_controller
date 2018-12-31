@@ -76,8 +76,8 @@ module.exports = function(app) {
     var doors =[{
         name:'Front door',
         image:{
-            on:'images/on.jpg',
-            off:'images/off.jpg'
+            on:'images/front-door-open.jpg',
+            off:'images/front-door.jpg'
         },
         switch:7
     }];

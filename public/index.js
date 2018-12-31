@@ -25,8 +25,12 @@
     var door=function(button) {
         console.log(button);
         this.open=function() {
+            this.button.addClass("on");
             console.log(this.button.text())
             this.onopen(this.button.text());
+            setTimeout($.proxy(function() {
+                this.button.removeClass("on");
+            },this),3000)
         }
         this.button=$(button).click($.proxy(this.open,this));
     }

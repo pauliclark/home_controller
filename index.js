@@ -57,7 +57,7 @@ chromeLauncher.launch({
   console.log(`Chrome debugging port running on ${chrome.port}`);
 });
 */
-/*var sr = require('screenres');
+var sr = require('screenres');
 (async () => {
 	const browser = await puppeteer.launch({
 		headless: false,
@@ -71,7 +71,7 @@ chromeLauncher.launch({
 	process.on('exit', (code) => {
 		browser.close();
 	  });
-})();*/
+})();
 process.on("exit",(code) => {
 	for(var k in app.lights) {
 		app.lights[k].destroy();
