@@ -63,7 +63,7 @@ var sr = require('screenres');
 	const browser = await puppeteer.launch({
 		headless: false,
 		executablePath: '/usr/bin/chromium-browser',
-		args: ['--disable-infobars','--start-fullscreen']
+		args: ['--disable-infobars','--start-fullscreen','--no-sandbox']
 	});
 	var size = sr.get()
 	const page = await browser.newPage();
