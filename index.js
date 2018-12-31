@@ -3,7 +3,7 @@ require("dot").process({
 	, destination: __dirname + "/render/"
 	, path: (__dirname + "/templates")
 });
-//const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer');
 var express = require('express')
 , http = require('http')
 , app = express()
