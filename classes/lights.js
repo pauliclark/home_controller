@@ -6,7 +6,9 @@ module.exports = function (app) {
             this.lighton = false;
             var _this = this;
             this.bcm = schema.bcm;
+            console.log(this.bcm);
             var channelIn = this.bcm[this.schema.status.toString()];
+            console.log(channelIn,this.schema.status);
             app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
             app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
             setTimeout(function () {
