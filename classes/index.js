@@ -7,7 +7,7 @@ module.exports = function(app) {
                 off:'images/kitchen.jpg'
             },
             switch:21,
-            status:6
+            status:29
         },
         {
             name:'Kitchen cabinets',
@@ -25,7 +25,7 @@ module.exports = function(app) {
                 off:'images/lounge.jpg'
             },
             switch:23,
-            status:29
+            status:3
         },
         {
             name:'Lounge Wall',
@@ -61,7 +61,7 @@ module.exports = function(app) {
                 off:'images/patio.jpg'
             },
             switch:28,
-            status:3 // ????
+            status:6 // ????
         },
         {
             name:'Hall',
