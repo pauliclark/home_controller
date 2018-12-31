@@ -59,9 +59,10 @@ chromeLauncher.launch({
 */
 var sr = require('screenres');
 (async () => {
+	try{
 	const browser = await puppeteer.launch({
 		headless: false,
-		//executablePath: '/usr/bin/chromium-browser',
+		executablePath: '/usr/bin/chromium-browser',
 		args: ['--disable-infobars','--start-fullscreen']
 	});
 	var size = sr.get()
@@ -70,7 +71,10 @@ var sr = require('screenres');
 	page.setViewport({ width:size[0], height:size[1] });
 	process.on('exit', (code) => {
 		browser.close();
-	  });
+		});
+	}catch(e) {
+		console.warn(e);
+	}
 })();
 process.on("exit",(code) => {
 	for(var k in app.lights) {
