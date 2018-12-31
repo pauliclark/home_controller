@@ -20,6 +20,9 @@ module.exports = function(app) {
                 client.on('toggle', function (data) {
                     _this.toggle(Object.keys(data));
                 })
+                client.on('door', function (data) {
+                    _this.door(Object.keys(data));
+                })
                 client.on('off', function (data) {
                     _this.off();
                 })
