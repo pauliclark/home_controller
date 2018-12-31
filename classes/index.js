@@ -25,7 +25,7 @@ module.exports = function(app) {
                 off:'images/lounge.jpg'
             },
             switch:23,
-            status:3
+            status:29
         },
         {
             name:'Lounge Wall',
@@ -61,7 +61,7 @@ module.exports = function(app) {
                 off:'images/patio.jpg'
             },
             switch:28,
-            status:7 // ????
+            status:3 // ????
         },
         {
             name:'Hall',
