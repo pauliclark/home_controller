@@ -22,11 +22,20 @@
             }
         });
     }
+    var door=function(button) {
+        console.log(button);
+        this.open=function() {
+            console.log(this.button.text())
+            this.onopen(this.button.text());
+        }
+        this.button=$(button).click($.proxy(this.open,this));
+    }
 $(document).ready(function() {
     (function(obj) {
         console.log(obj);
         obj.client = new socketClient();
         obj.lights = {};
+        obj.doors = {};
         $('button.lights').get().map(b => {
            var l = new light(b);
            l.ontoggle=function(k) {
@@ -35,11 +44,19 @@ $(document).ready(function() {
            }
             obj.lights[l.button.text()]=l;
         });
+        $('button.doors').get().map(b => {
+           var l = new door(b);
+           l.onopen=function(k) {
+               console.log(k);
+            obj.client.door(k);
+           }
+            obj.doors[l.button.text()]=l;
+        });
         $('button.alloff').click(function() {
             obj.client.off();
         })
         console.log(obj);
-    })(window.lights={})
+    })(window.homeController={})
 })
 var socketClient=function() {
     this.connected=function() {
@@ -56,6 +73,12 @@ var socketClient=function() {
         var obj={};
         obj[k]=true;
         this.socket.emit('toggle',obj);
+    }
+    this.door=function(k) {
+        console.log("open",k);
+        var obj={};
+        obj[k]=true;
+        this.socket.emit('door',obj);
     }
     this.off=function() {
         console.log("off");

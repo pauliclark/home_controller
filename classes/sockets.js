@@ -44,6 +44,12 @@ module.exports = function(app) {
         off() {
             for(var name in app.lights) app.lights[name].off();
         }
+        door(names) {
+            names.map(name => {
+                console.log(name);
+                if (app.doors[name]) app.doors[name].open();
+            })
+        }
         toggle(names) {
             names.map(name => {
                 console.log(name);

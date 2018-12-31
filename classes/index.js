@@ -73,9 +73,39 @@ module.exports = function(app) {
             status:1
         }
     ];
+    var door =[{
+        name:'Front door',
+        image:{
+            on:'images/on.jpg',
+            off:'images/off.jpg'
+        },
+        switch:7
+    }];
+    
+    var bcm={
+        '0':17,
+        '1':18,
+        '2':27,
+        '3':22,
+        '4':23,
+        '5':24,
+        '6':25,
+        '7':4,
+        '21':5,
+        '22':6,
+        '23':13,
+        '24':19,
+        '25':26,
+        '26':12,
+        '27':16,
+        '28':20,
+        '29':21
+    }
     var light=require('./lights')(app);
+    var door=require('./door')(app);
     return {
         sockets:require('./sockets')(app),
-        lights:schema.map(l => new light(app,l))
+        doors:door.map(d => new door(app,Object.assign(d,{bcm}))),
+        lights:schema.map(l => new light(app,Object.assign(l,{bcm})))
     };
 }

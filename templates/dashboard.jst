@@ -87,6 +87,9 @@ body.connected .notconnected{
 {{ for(var k in it.lights) { }}
 {{=it.lights[k].render()}}
 {{ }}}
+{{ for(var k in it.doors) { }}
+{{=it.doors[k].render()}}
+{{ }}}
 <button type='button' class="alloff"><div>Turn all off</div></button>
 <div class="notconnected"></div>
 </body>

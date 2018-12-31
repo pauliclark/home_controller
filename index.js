@@ -24,10 +24,14 @@ app.gpio.init({
 })
 
 
-var {lights,sockets} = require("./classes")(app);
+var {lights,doors,sockets} = require("./classes")(app);
 app.lights={};
 lights.map(l => {
 	app.lights[l.schema.name]=l;
+})
+app.doors={};
+doors.map(l => {
+	app.doors[l.schema.name]=l;
 })
 app.sockets=sockets;
 lights=lights.map(l => l.render());
@@ -35,7 +39,7 @@ lights=lights.map(l => l.render());
 app.use(express.static('public'))
 
 app.get('/', function(req, res){
-  res.send(render.dashboard({lights:app.lights}));
+  res.send(render.dashboard({doors:app.doors,lights:app.lights}));
 });
 
 app.use(function(err, req, res, next) {
