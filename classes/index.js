@@ -73,7 +73,7 @@ module.exports = function(app) {
             status:1
         }
     ];
-    var door =[{
+    var doors =[{
         name:'Front door',
         image:{
             on:'images/on.jpg',
@@ -105,7 +105,7 @@ module.exports = function(app) {
     var door=require('./door')(app);
     return {
         sockets:require('./sockets')(app),
-        doors:door.map(d => new door(app,Object.assign(d,{bcm}))),
+        doors:doors.map(d => new door(app,Object.assign(d,{bcm}))),
         lights:schema.map(l => new light(app,Object.assign(l,{bcm})))
     };
 }
