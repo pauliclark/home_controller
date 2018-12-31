@@ -86,9 +86,9 @@ var socketClient=function() {
         this.socket.emit('off',obj);
     }
     this.status=function(data) {
-        console.log(data,window.lights.lights);
+        console.log(data,window.homeController.lights);
         for(var k in data) {
-            window.lights.lights[k].status=data[k];
+            window.homeController.lights[k].status=data[k];
         }
     }
     this.url=`${window.location.host}`;
