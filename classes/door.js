@@ -20,7 +20,7 @@ module.exports = function (app) {
             },500)
         }
         render() {
-            return `<button type='button' class='door ${this.schema.name.toLowerCase().replace(/\W/g, '')}'><div>${this.schema.name}</div></button>`
+            return `<button type='button' class='doors ${this.schema.name.toLowerCase().replace(/\W/g, '')}'><div>${this.schema.name}</div></button>`
         }
     }
 }

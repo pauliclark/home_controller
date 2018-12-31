@@ -34,7 +34,7 @@ body{
 body.connected .notconnected{
 	display:none;
 }
-.lights,.alloff{
+.lights,.alloff,.doors{
 	display:inline-block;
 	width:50%;
 	height:20%;
@@ -47,6 +47,7 @@ body.connected .notconnected{
 .alloff{
 	visibility:hidden;
 }
+.doors>div,
 .lights>div,
 .alloff>div{
 	position:absolute;
@@ -61,8 +62,10 @@ body.connected .notconnected{
 	color:#fff;
 }
 @media screen and (orientation:landscape) { 
+.lights,.alloff,.doors{
 	width:25%;
 	height:50%;
+}
  }
 .lights.on{
 	border-color:#F00;
@@ -79,6 +82,14 @@ body.connected .notconnected{
 	}
 	.{{=k.toLowerCase().replace(/\W/g,'')}}.on{
 		background-image:url({{=it.lights[k].schema.image.on}});
+	}
+{{ }}}
+{{ for(var k in it.doors) { }}
+	.{{=k.toLowerCase().replace(/\W/g,'')}}{
+		background-image:url({{=it.doors[k].schema.image.off}});
+	}
+	.{{=k.toLowerCase().replace(/\W/g,'')}}.on{
+		background-image:url({{=it.doors[k].schema.image.on}});
 	}
 {{ }}}
 </style>
