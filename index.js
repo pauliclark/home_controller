@@ -9,7 +9,7 @@ const port = 3000
 
 app.httpServer = http.createServer(app);
 app.httpServer.listen(port, function() {
-	console.log('Listening on port %d', app.httpServer.address().port);
+	// console.log('Listening on port %d', app.httpServer.address().port);
 setTimeout(() => {
 	open(`http://localhost:${app.httpServer.address().port}`)
 }, 1000)
@@ -49,7 +49,7 @@ app.get('/', function(req, res){
 });
 
 app.use(function(err, req, res, next) {
-	console.error(err.stack);
+	// console.error(err.stack);
 	res.status(500).send('Something broke!');
 	next()
 })

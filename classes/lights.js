@@ -31,8 +31,8 @@ export default function (app) {
                     }
                 }
             }, 100)
-            console.log(`GPIO ${this.schema.switch} out`)
-            console.log(`GPIO ${this.schema.status} in`)
+            // console.log(`GPIO ${this.schema.switch} out`)
+            // console.log(`GPIO ${this.schema.status} in`)
 
         }
         destroy() {
@@ -40,7 +40,7 @@ export default function (app) {
             app.gpio.close(this.channelOut)
         }
         statusChanged(err, status) {
-            console.log("Light " + this.schema.name + " on BCM " + this.channelIn + " to " + status);
+            // console.log("Light " + this.schema.name + " on BCM " + this.channelIn + " to " + status);
             //console.log('broadcast',this.schema,status);
             const obj = {}
             obj[this.schema.name] = status;
@@ -51,7 +51,7 @@ export default function (app) {
         }
         toggle() {
             this.on = !this.on;
-            console.log("Toggle " + this.schema.name + " on BCM " + this.channelOut + " to " + (this.on ? '1' : '0'))
+            // console.log("Toggle " + this.schema.name + " on BCM " + this.channelOut + " to " + (this.on ? '1' : '0'))
 
             app.gpio.write(this.channelOut, this.on ? 1 : 0)
         }

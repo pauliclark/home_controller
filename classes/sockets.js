@@ -26,19 +26,19 @@ export default function(app) {
                     this.off();
                 })
                 client.on('status', () => {
-                    console.log("Status requested")
+                    // console.log("Status requested")
                     var stats={};
                     for(var k in app.lights) {
                         stats[k]=app.lights[k].lighton;
                     }
-                    console.log(stats);
+                    // console.log(stats);
                     client.emit("status",stats)
                 })
             });
 
         }
         broadcast(data) {
-            console.log(data);
+            // console.log(data);
             this.clients.map(c => {
                 c.emit("status",data)
             })
@@ -48,13 +48,13 @@ export default function(app) {
         }
         door(names) {
             names.map(name => {
-                console.log(name);
+                // console.log(name);
                 if (app.doors[name]) app.doors[name].open();
             })
         }
         toggle(names) {
             names.map(name => {
-                console.log(name);
+                // console.log(name);
                 if (app.lights[name]) app.lights[name].toggle();
             })
             

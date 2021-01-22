@@ -5,7 +5,7 @@ export default function (app) {
             this.bcm = schema.bcm;
             app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT);
             app.gpio.write(this.bcm[this.schema.switch.toString()], 1)
-            console.log(`GPIO ${this.schema.switch} out`)
+            // console.log(`GPIO ${this.schema.switch} out`)
 
         }
         destroy() {
