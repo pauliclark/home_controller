@@ -65,8 +65,7 @@ body {
     box-shadow: 0px -5px 5px rgba(0,0,0,0.3);
   }
 
-  &.on,
-  &:hover{
+  &.on{
     filter: grayscale(0);
     
     >div{
