@@ -1,19 +1,18 @@
-// import dot from 'dot'
-// dot.process({
-// 	global: "_page.render"
-// 	, destination: __dirname + "/render/"
-// 	, path: (__dirname + "/templates")
-// })
+
 import hbs from 'hbs'
+import open from 'open'
 import express from 'express'
 import http from 'http'
 import buttonStyleTag from './helpers/buttonStyleTag.js'
 const app = express()
-// import render from './render/index.js'
+const port = 3000
 
 app.httpServer = http.createServer(app);
-app.httpServer.listen(3000, function() {
+app.httpServer.listen(port, function() {
 	console.log('Listening on port %d', app.httpServer.address().port);
+setTimeout(() => {
+	open(`http://localhost:${app.httpServer.address().port}`)
+}, 1000)
 })
 
 //app.Gpio={accessible:false}
@@ -47,43 +46,13 @@ const doorsHTML = doors.map(d => d.render())
 const lightsHTML = lights.map(d => d.render())
 app.get('/', function(req, res){
 	res.render('home', {doors:doorsHTML,lights:lightsHTML, style})
-  // res.send(render.dashboard({doors:app.doors,lights:app.lights}));
 });
 
 app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.status(500).send('Something broke!');
-});
-
-/*
-const chromeLauncher = require('chrome-launcher');
-
-chromeLauncher.launch({
-  startingUrl: 'http://localhost:3000',
-  chromeFlags:['--start-fullscreen','--kiosk']
-}).then(chrome => {
-  console.log(`Chrome debugging port running on ${chrome.port}`);
-});
-*/
-// var sr = require('screenres');
-// (async () => {
-// 	try{
-// 	const browser = await puppeteer.launch({
-// 		headless: false,
-// 		executablePath: '/usr/bin/chromium-browser',
-// 		args: ['--disable-infobars','--start-fullscreen','--no-sandbox']
-// 	});
-// 	var size = sr.get()
-// 	const page = await browser.newPage();
-// 	await page.goto('http://localhost:3000');
-// 	page.setViewport({ width:size[0], height:size[1] });
-// 	process.on('exit', (code) => {
-// 		browser.close();
-// 		});
-// 	}catch(e) {
-// 		console.warn(e);
-// 	}
-// })();
+	next()
+})
 process.on("exit",(code) => {
 	for(var k in app.lights) {
 		app.lights[k].destroy();

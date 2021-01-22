@@ -7,6 +7,7 @@
   "scripts": {
     "start:dev": "nodemon index.js",
     "start": "forever start index.js",
+    "stop": "forever stop index.js",
     "dev": "webpack --watch --config webpack.config.cjs",
     "build": "webpack --config webpack.config.prod.cjs"
   },
@@ -25,6 +26,7 @@
     "express": "^4.16.4",
     "forever": "^3.0.4",
     "hbs": "^4.1.1",
+    "open": "^7.3.1",
     "rpi-gpio": "^2.1.2",
     "rpio": "^1.0.11",
     "socketio": "^1.0.0"
