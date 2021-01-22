@@ -1,5 +1,8 @@
-module.exports = function(app) {
-    var schema=[
+import doors from './door.js'
+import lights from './lights.js'
+import sockets from './sockets.js'
+export default function(app) {
+    const schema=[
         {
             name:'Kitchen',
             image:{
@@ -73,7 +76,7 @@ module.exports = function(app) {
             status:1
         }
     ];
-    var doors =[{
+    const doorSchema =[{
         name:'Front door',
         image:{
             on:'images/front-door-open.jpg',
@@ -101,11 +104,11 @@ module.exports = function(app) {
         '28':20,
         '29':21
     }
-    var light=require('./lights')(app);
-    var door=require('./door')(app);
+    const light=lights(app);
+    const door=doors(app);
     return {
-        sockets:require('./sockets')(app),
-        doors:doors.map(d => new door(app,Object.assign(d,{bcm}))),
-        lights:schema.map(l => new light(app,Object.assign(l,{bcm})))
-    };
+        sockets:sockets(app),
+        doors:doorSchema.map(d => new door(app,{...d,bcm})),
+        lights:schema.map(l => new light(app,{...l,bcm}))
+    }
 }

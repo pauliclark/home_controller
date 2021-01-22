@@ -1,0 +1,180 @@
+
+
+.notconnected {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.5);
+
+  &::before {
+    display: block;
+    color: #fff;
+    content: 'DISCONNECTED';
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+body {
+  background: #000;
+  padding: 0px;
+  margin: 0px;
+  font-family: arial;
+
+  &.connected .notconnected {
+    display: none;
+  }
+}
+
+.lights,
+.alloff,
+.doors {
+  display: inline-block;
+  width: calc(50% - 20px);
+  height: calc(20% - 20px);
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: none;
+  cursor: none;
+  position: relative;
+  background-blend-mode: difference;
+    filter: grayscale(1);
+  border-radius: 10px;
+  margin: 10px;
+  transition: filter 0.5s;
+  outline: none;
+  overflow: hidden;
+  
+  >div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    transition: color 0.5s, background-color 0.5s;
+    box-shadow: 0px -5px 5px rgba(0,0,0,0.3);
+  }
+
+  &.on,
+  &:hover{
+    filter: grayscale(0);
+    
+    >div{
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #555;
+    }
+  }
+}
+
+.alloff {
+  visibility: hidden;
+  
+  >div{
+    bottom:auto;
+    top:50%;
+    transform: translateY(-50%);
+  }
+}
+
+
+@media screen and (orientation:landscape) {
+  .lights {
+    width: calc(25% - 20px);
+    height: calc(33% - 20px);
+  }
+
+  .alloff,
+  .doors {
+    width: calc(50% - 20px);
+    height: calc(33% - 20px);
+  }
+}
+
+
+.lights.on~.alloff {
+  visibility: visible;
+}
+
+
+    .kitchen {
+      background-image:url(./rooms/kitchen.jpg);
+    }
+    .kitchen.on {
+      background-image:url(./rooms/kitchen.jpg);
+    }
+    
+
+    .kitchencabinets {
+      background-image:url(./rooms/cabinets.jpg);
+    }
+    .kitchencabinets.on {
+      background-image:url(./rooms/cabinets.jpg);
+    }
+    
+
+    .lounge {
+      background-image:url(./rooms/lounge.jpg);
+    }
+    .lounge.on {
+      background-image:url(./rooms/lounge.jpg);
+    }
+    
+
+    .loungewall {
+      background-image:url(./rooms/loungewall.jpg);
+    }
+    .loungewall.on {
+      background-image:url(./rooms/loungewall.jpg);
+    }
+    
+
+    .boudoir {
+      background-image:url(./rooms/boudoir.jpg);
+    }
+    .boudoir.on {
+      background-image:url(./rooms/boudoir.jpg);
+    }
+    
+
+    .bedroom {
+      background-image:url(./rooms/bedroom.jpg);
+    }
+    .bedroom.on {
+      background-image:url(./rooms/bedroom.jpg);
+    }
+    
+
+    .patio {
+      background-image:url(./rooms/patio.jpg);
+    }
+    .patio.on {
+      background-image:url(./rooms/patio.jpg);
+    }
+    
+
+    .hall {
+      background-image:url(./rooms/hall.jpg);
+    }
+    .hall.on {
+      background-image:url(./rooms/hall.jpg);
+    }
+    
+
+    .frontdoor {
+      background-image:url(./rooms/door.jpg);
+    }
+    .frontdoor.on {
+      background-image:url(./rooms/door.jpg);
+    }
+    
+    

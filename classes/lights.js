@@ -1,33 +1,33 @@
-module.exports = function (app) {
+export default function (app) {
     return class light {
         constructor(app, schema) {
-            this.schema = schema;
-            this.on = false;
-            this.lighton = false;
-            var _this = this;
-            this.bcm = schema.bcm;
-            console.log(this.bcm);
-            var channelIn = this.bcm[this.schema.status.toString()];
-            console.log(channelIn,this.schema.status);
-            app.gpio.open(this.bcm[this.schema.switch.toString()], app.gpio.OUTPUT)
-            app.gpio.open(this.bcm[this.schema.status.toString()], app.gpio.INPUT)
-            setTimeout(function () {
-                _this.lighton = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
-                app.gpio.write(_this.bcm[_this.schema.switch.toString()], _this.on ? 1 : 0)
+            this.schema = schema
+            this.on = false
+            this.lighton = false
+            this.bcm = schema.bcm
+            const channelIn = this.bcm[this.schema.status.toString()]
+            this.channelIn = channelIn
+            const channelOut = this.bcm[this.schema.switch.toString()]
+            this.channelOut = channelOut
+            app.gpio.open(channelOut, app.gpio.OUTPUT)
+            app.gpio.open(channelIn, app.gpio.INPUT)
+            setTimeout(() => {
+                this.lighton = app.gpio.read(channelIn)
+                app.gpio.write(channelOut, this.on ? 1 : 0)
             }, 1000);
-            var values = [];
-            setInterval(function () {
-                var v = app.gpio.read(_this.bcm[_this.schema.status.toString()]);
-                if (_this.lighton != v) {
+            const values = [];
+            setInterval(() => {
+                let v = app.gpio.read(channelIn);
+                if (this.lighton != v) {
                     values.push(v);
                     while (values.length > 3) values.shift();
-                    var sum = values.reduce(function (a, b) { return a + b; });
-                    var avg = sum / values.length;
-                    var v = (Math.round(avg) == 1);
-                    if (_this.lighton != v) {
-                        _this.lighton = v;
-                        if (_this.bcm[_this.schema.status.toString()] == 20) console.log(_this.schema.status, v);
-                        _this.statusChanged(null, _this.lighton)
+                    const sum = values.reduce(function (a, b) { return a + b; });
+                    const avg = sum / values.length;
+                    v = (Math.round(avg) == 1);
+                    if (this.lighton != v) {
+                        this.lighton = v;
+                        if (channelIn == 20) console.log(this.schema.status, v);
+                        this.statusChanged(null, this.lighton)
                     }
                 }
             }, 100)
@@ -36,13 +36,13 @@ module.exports = function (app) {
 
         }
         destroy() {
-            app.gpio.close(this.bcm[this.schema.switch.toString()])
-            app.gpio.close(this.bcm[this.schema.status.toString()])
+            app.gpio.close(this.channelIn)
+            app.gpio.close(this.channelOut)
         }
         statusChanged(err, status) {
-            console.log("Light " + this.schema.name + " on BCM " + this.bcm[this.schema.status.toString()] + " to " + status);
+            console.log("Light " + this.schema.name + " on BCM " + this.channelIn + " to " + status);
             //console.log('broadcast',this.schema,status);
-            var obj = {};
+            const obj = {}
             obj[this.schema.name] = status;
             app.sockets.broadcast(obj)
         }
@@ -50,11 +50,10 @@ module.exports = function (app) {
             if (this.lighton) this.toggle();
         }
         toggle() {
-            const _this = this;
             this.on = !this.on;
-            console.log("Toggle " + this.schema.name + " on BCM " + this.bcm[this.schema.switch.toString()] + " to " + (this.on ? '1' : '0'))
+            console.log("Toggle " + this.schema.name + " on BCM " + this.channelOut + " to " + (this.on ? '1' : '0'))
 
-            app.gpio.write(this.bcm[this.schema.switch.toString()], this.on ? 1 : 0)
+            app.gpio.write(this.channelOut, this.on ? 1 : 0)
         }
         render() {
             return `<button type='button' class='lights ${this.schema.name.toLowerCase().replace(/\W/g, '')}'><div>${this.schema.name}</div></button>`

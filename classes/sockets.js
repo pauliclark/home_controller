@@ -1,8 +1,8 @@
-module.exports = function(app) {
+import io from 'socket.io'
+export default function(app) {
     class socketServer {
         constructor(app) {
-            
-            this.io = require('socket.io')(app.httpServer, {
+            this.io = io(app.httpServer, {
               //path: '/test',
               serveClient: false,
               // below are engine.IO options
@@ -11,22 +11,21 @@ module.exports = function(app) {
               cookie: false
             });
             this.clients=[];
-            var _this=this;
-            this.io.on('connection', function (client) {
-                _this.clients.push(client);
-                client.on('disconnect', function () {
-                    _this.clients.splice(_this.clients.indexOf(client),1);
+            this.io.on('connection', (client) => {
+                this.clients.push(client);
+                client.on('disconnect', () => {
+                    this.clients.splice(this.clients.indexOf(client),1);
                 })
-                client.on('toggle', function (data) {
-                    _this.toggle(Object.keys(data));
+                client.on('toggle', (data) => {
+                    this.toggle(Object.keys(data));
                 })
-                client.on('door', function (data) {
-                    _this.door(Object.keys(data));
+                client.on('door', (data) => {
+                    this.door(Object.keys(data));
                 })
-                client.on('off', function (data) {
-                    _this.off();
+                client.on('off', (data) => {
+                    this.off();
                 })
-                client.on('status', function () {
+                client.on('status', () => {
                     console.log("Status requested")
                     var stats={};
                     for(var k in app.lights) {

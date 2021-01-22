@@ -1,0 +1,17 @@
+<html>
+
+<head>
+  <title>Bungy</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+  <script type='text/javascript' src='/main.js'></script>
+  <link href='/main.css' rel='stylesheet' />
+</head>
+
+<body>
+  {{#each lights}}{{{this}}}{{/each}}{{#each doors}}{{{this}}}{{/each}}<button type='button' class="alloff">
+    <div>Turn all off</div>
+  </button>
+  <div class="notconnected"></div>
+</body>
+
+</html>
