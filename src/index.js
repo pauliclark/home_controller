@@ -63,7 +63,7 @@ const SocketClient=function() {
         this.socket.emit('off',obj);
     }
     this.status=function(data) {
-        // console.log(data,window.homeController.lights);
+        console.log(data,controller.lights);
         for(var k in data) {
             controller.lights[k].status=data[k];
         }
