@@ -1,6 +1,7 @@
 import './main.scss'
 import $ from 'jquery'
 import io from 'socket.io-client'
+const controller = {}
 const Light=function(button) {
     // console.log(button);
     this.on=false;
@@ -64,7 +65,7 @@ const SocketClient=function() {
     this.status=function(data) {
         // console.log(data,window.homeController.lights);
         for(var k in data) {
-            window.homeController.lights[k].status=data[k];
+            controller.lights[k].status=data[k];
         }
     }
     this.url=`${window.location.host}`
@@ -73,7 +74,6 @@ const SocketClient=function() {
     this.socket.on('disconnect', () => this.disconnected())
     this.socket.on('status', () => this.status())
 }
-const controller = {}
 window.addEventListener('load',() => {
         // console.log(obj);
         controller.client = new SocketClient();
@@ -82,7 +82,7 @@ window.addEventListener('load',() => {
         $('button.lights').get().map(b => {
            var l = new Light(b);
            l.ontoggle=function(k) {
-               console.log(k);
+            //    console.log(k);
             controller.client.toggle(k);
            }
             controller.lights[l.button.text()]=l;
@@ -90,7 +90,7 @@ window.addEventListener('load',() => {
         $('button.doors').get().map(b => {
            var l = new Door(b);
            l.onopen=function(k) {
-               console.log(k);
+            //    console.log(k);
             controller.client.door(k);
            }
             controller.doors[l.button.text()]=l;
