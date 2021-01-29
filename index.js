@@ -4,6 +4,8 @@ import open from 'open'
 import express from 'express'
 import http from 'http'
 import buttonStyleTag from './helpers/buttonStyleTag.js'
+import SegfaultHandler from 'segfault-handler'
+SegfaultHandler.registerHandler("crash.log")
 const app = express()
 const port = 3000
 
@@ -11,7 +13,9 @@ app.httpServer = http.createServer(app);
 app.httpServer.listen(port, function() {
 	// console.log('Listening on port %d', app.httpServer.address().port);
 setTimeout(() => {
-	open(`http://localhost:${app.httpServer.address().port}`)
+	open(`http://localhost:${app.httpServer.address().port}`, {
+		app:['google chrome','--start-fullscreen']
+	})
 }, 1000)
 })
 
