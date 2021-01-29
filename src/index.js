@@ -72,7 +72,10 @@ const SocketClient=function() {
     this.socket=io(this.url);
     this.socket.on('connect', () => {this.connected()})
     this.socket.on('disconnect', () => {this.disconnected()})
-    this.socket.on('status', (...args) => {this.status(...args)})
+    this.socket.on('status', (...args) => {
+        console.log(...args)
+        this.status(...args)
+    })
 }
 $(() => {
         // console.log(obj);
