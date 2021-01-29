@@ -14,7 +14,7 @@ app.httpServer.listen(port, function() {
 	// console.log('Listening on port %d', app.httpServer.address().port);
 setTimeout(() => {
 	open(`http://localhost:${app.httpServer.address().port}`, {
-		app:['chromium','--start-fullscreen']
+		app:['chromium-browser','--start-fullscreen']
 	})
 }, 1000)
 })
