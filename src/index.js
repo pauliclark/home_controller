@@ -70,11 +70,11 @@ const SocketClient=function() {
     }
     this.url=`${window.location.host}`
     this.socket=io(this.url);
-    this.socket.on('connect', () => this.connected())
-    this.socket.on('disconnect', () => this.disconnected())
-    this.socket.on('status', (...args) => this.status(...args))
+    this.socket.on('connect', () => {this.connected()})
+    this.socket.on('disconnect', () => {this.disconnected()})
+    this.socket.on('status', (...args) => {this.status(...args)})
 }
-window.addEventListener('load',() => {
+$(() => {
         // console.log(obj);
         controller.client = new SocketClient();
         controller.lights = {}
