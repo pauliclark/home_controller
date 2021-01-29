@@ -63,7 +63,6 @@ const SocketClient=function() {
         this.socket.emit('off',obj);
     }
     this.status=function(data) {
-        console.log(data,controller.lights);
         for(var k in data) {
             controller.lights[k].status=data[k];
         }
@@ -73,7 +72,6 @@ const SocketClient=function() {
     this.socket.on('connect', () => {this.connected()})
     this.socket.on('disconnect', () => {this.disconnected()})
     this.socket.on('status', (...args) => {
-        console.log(...args)
         this.status(...args)
     })
 }
