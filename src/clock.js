@@ -1,6 +1,5 @@
-// import $ from 'jquery'
 import './clock.scss'
-const updateMilliseconds = 20
+const updateMilliseconds = 50
 const clock = {
   container: null,
   display:false,
@@ -19,10 +18,9 @@ const clock = {
     const seconds = date.getSeconds()
     const ms = date.getMilliseconds()
     
-    const minute = (minutes * 6) + (seconds / 60);
+    const minute = (minutes * 6) + (seconds / 10);
     const hour = (hours * 30) + (minutes / 2);
     const second = (updateMilliseconds === 1000) ? (seconds * 6) : ((seconds * 6) + (6*(ms/1000)))
-// console.log(updateMilliseconds, ms)
     this.hands.hour.style.transform = `translate(-50%, -100%) rotate(${hour}deg)`
     this.hands.minute.style.transform = `translate(-50%, -100%) rotate(${minute}deg)`
     this.hands.second.style.transform = `translate(-50%, -100%) rotate(${second}deg)`

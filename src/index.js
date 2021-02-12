@@ -1,10 +1,9 @@
 import './main.scss'
-// import $ from 'jquery'
 import io from 'socket.io-client'
 import clock from './clock.js'
 let idleTimeout = null
 let idleDelay = 1000*60*3
-// idleDelay = 30000
+// idleDelay = 10000
 const showClock = () => {
     clock.show(() => {
         resetIdle()
@@ -16,12 +15,10 @@ const resetIdle = () => {
 }
 const controller = {}
 const Light=function(button) {
-    // console.log(button);
     this.on=false;
     this.ontoggle=function() {}
     this.toggle=function() {
         resetIdle()
-        // console.log(this.button.text())
         this.ontoggle(this.button.innerText);
     }
     this.button=button
@@ -32,11 +29,7 @@ const Light=function(button) {
         },
         set: function (v) {
             this.on=v;
-            // if (this.on) {
-                this.button.classList.toggle("on", this.on)
-            // }else{
-            //     this.button.removeClass("on");
-            // }
+            this.button.classList.toggle("on", this.on)
         }
     });
 }

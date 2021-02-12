@@ -35,20 +35,20 @@ body {
 .alloff,
 .doors {
   display: inline-block;
-  width: calc(50% - 20px);
-  height: calc(20% - 20px);
+  width: calc(50% - 12px);
+  height: calc(20% - 12px);
   background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  border: none;
+  border: 5px solid #000;
   cursor: none;
   position: relative;
   background-blend-mode: difference;
-    filter: grayscale(1);
-  border-radius: 10px;
-  margin: 10px;
-  transition: filter 0.5s;
+  filter: grayscale(1);
+  border-radius: 18px;
+  margin: 6px;
+  transition: filter 0.5s, background-color 0.5s;
   outline: none;
   overflow: hidden;
   
@@ -68,7 +68,8 @@ body {
 
   &.on{
     filter: grayscale(0);
-    
+    border-color: #fff;
+
     >div{
       background-color: rgba(255, 255, 255, 0.7);
       color: #555;
