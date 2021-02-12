@@ -19,7 +19,7 @@ const clock = {
     const seconds = date.getSeconds()
     const ms = date.getMilliseconds()
     
-    const minute = (minutes * 6) + (seconds / 6);
+    const minute = (minutes * 6) + (seconds / 60);
     const hour = (hours * 30) + (minutes / 2);
     const second = (updateMilliseconds === 1000) ? (seconds * 6) : ((seconds * 6) + (6*(ms/1000)))
 // console.log(updateMilliseconds, ms)
