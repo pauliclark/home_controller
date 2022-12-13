@@ -23,7 +23,7 @@
   "homepage": "https://github.com/pauliclark/home_controller#readme",
   "dependencies": {
     "dot": "^1.1.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "forever": "^3.0.4",
     "hbs": "^4.1.1",
     "open": "^7.3.1",
